@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | PDF Master Pro</title>
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #eef3f8;
+        }
+
+        .dashboard {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ================= SIDEBAR ================= */
+
+        .sidebar {
+            width: 315px;
+            min-height: 100vh;
+            background: #0f172a;
+            color: white;
+            padding: 20px 24px;
+        }
+
+        .sidebar h2 {
+            margin: 0 0 35px;
+            font-size: 25px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            padding: 15px;
+            margin-bottom: 8px;
+
+            border-radius: 10px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+        .sidebar li:hover {
+            background: #1e293b;
+        }
+
+        .sidebar li.active {
+            background: #2864e6;
+        }
+
+        .sidebar li i {
+            width: 22px;
+            text-align: center;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .dashboard-content {
+            flex: 1;
+            padding: 35px 40px;
+            overflow-x: auto;
+        }
+
+        .dashboard-content h1 {
+            margin-top: 0;
+            font-size: 34px;
+            color: #14213d;
+        }
+
+        .dashboard-content > p {
+            font-size: 17px;
+            color: #334155;
+        }
+
+        .dashboard-content hr {
+            border: 0;
+            border-top: 1px solid #cbd5e1;
+            margin: 25px 0;
+        }
+
+        .dashboard-content > h2 {
+            color: #14213d;
+            font-size: 25px;
+        }
+
+        /* ================= HISTORY ================= */
+
+        #historyTable {
+            border-collapse: collapse;
+            background: white;
+            width: 100%;
+            max-width: 850px;
+        }
+
+        #historyTable th {
+            background: #f1f5f9;
+            color: #14213d;
+        }
+
+        #historyTable th,
+        #historyTable td {
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            text-align: left;
+        }
+
+        /* ================= CARDS ================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(4, minmax(180px, 1fr));
+
+            gap: 28px;
+
+            margin-top: 35px;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 20px;
+
+            min-height: 220px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.08);
+
+            text-align: center;
+        }
+
+        .dashboard-card i {
+            font-size: 50px;
+            color: #2864e6;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card h3 {
+            color: #14213d;
+            margin: 5px;
+            font-size: 18px;
+        }
+
+        .dashboard-card h2 {
+            color: #2864e6;
+            font-size: 28px;
+            margin: 10px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .dashboard-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .sidebar {
+                width: 250px;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .dashboard {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <div class="sidebar">
+
+        <h2>
+            PDF Master Pro
+        </h2>
+
+
+        <ul>
+
+
+            <!-- Dashboard -->
+
+            <li
+                class="active"
+                onclick="window.location.href='dashboard.html'"
+            >
+
+                <i class="fa-solid fa-house"></i>
+
+                Dashboard
+
+            </li>
+
+
+            <!-- Merge -->
+
+            <li
+                onclick="window.location.href='merge-pdf.html'"
+            >
+
+                <i class="fa-solid fa-object-group"></i>
+
+                Merge PDF
+
+            </li>
+
+
+            <!-- Split -->
+
+            <li
+                onclick="window.location.href='split-pdf.html'"
+            >
+
+                <i class="fa-solid fa-scissors"></i>
+
+                Split PDF
+
+            </li>
+
+
+            <!-- Compress -->
+
+            <li
+                onclick="window.location.href='compress-pdf.html'"
+            >
+
+                <i class="fa-solid fa-compress"></i>
+
+                Compress PDF
+
+            </li>
+
+
+            <!-- Image to PDF -->
+
+            <li
+                onclick="window.location.href='image-to-pdf.html'"
+            >
+
+                <i class="fa-solid fa-image"></i>
+
+                Image to PDF
+
+            </li>
+
+
+            <!-- Logout -->
+
+            <li id="logoutBtn">
+
+                <i
+                    class="fa-solid fa-right-from-bracket"
+                ></i>
+
+                Logout
+
+            </li>
+
+
+        </ul>
+
+    </div>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <div class="dashboard-content">
+
+
+        <h1 id="welcomeUser">
+            Welcome 👋
+        </h1>
+
+
+        <p>
+            Select a PDF tool to get started.
+        </p>
+
+
+        <hr>
+
+
+        <!-- ================= HISTORY ================= -->
+
+        <h2>
+            <div class="history-header">
+
+    <h2>
+        My PDF History
+    </h2>
+
+          <button
+                     id="deleteHistoryBtn"
+                    class="delete-history-b><i class="fa-solid fa-trash"></i>
+            Delete History
+                 </button>
+
+                    </div>
+        </h2>
+
+
+        <table
+            id="historyTable"
+        >
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Operation
+                    </th>
+
+                    <th>
+                        File Name
+                    </th>
+
+                    <th>
+                        Date
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+            </tbody>
+
+        </table>
+
+
+        <br>
+
+
+        <!-- ================= DASHBOARD CARDS ================= -->
+
+        <div class="dashboard-grid">
+
+
+            <!-- Files Processed -->
+
+            <div class="dashboard-card">
+
+                <i
+                    class="fa-solid fa-file-pdf"
+                ></i>
+
+
+                <h3>
+                    Files Processed
+                </h3>
+
+
+                <h2 id="filesProcessed">
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- Recent Jobs -->
+
+            <div class="dashboard-card">
+
+                <i
+                    class="fa-solid fa-clock-rotate-left"
+                ></i>
+
+
+                <h3>
+                    Recent Jobs
+                </h3>
+
+
+                <h2 id="recentJobs">
+                    0
+                </h2>
+
+            </div>
+
+
+            <!-- Storage -->
+
+            <div class="dashboard-card">
+
+                <i
+                    class="fa-solid fa-hard-drive"
+                ></i>
+
+
+                <h3>
+                    Storage Used
+                </h3>
+
+
+                <h2>
+                    2.1 GB
+                </h2>
+
+            </div>
+
+
+            <!-- Plan -->
+
+            <div class="dashboard-card">
+
+                <i
+                    class="fa-solid fa-crown"
+                ></i>
+
+
+                <h3>
+                    Plan
+                </h3>
+
+
+                <h2>
+                    Free
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- Dashboard JavaScript -->
+
+<script src="../js/dashboard.js"></script>
+
+
+</body>
+
+</html>

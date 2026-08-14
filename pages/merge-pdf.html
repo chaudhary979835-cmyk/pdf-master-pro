@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge PDF | PDF Master Pro</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/upload.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fa-solid fa-file-pdf"></i>
+            <h2>PDF Master Pro</h2>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="merge-pdf.html">Merge PDF</a></li>
+            <li><a href="split-pdf.html">Split PDF</a></li>
+            <li><a href="compress-pdf.html">Compress</a></li>
+        </ul>
+
+    </nav>
+</header>
+
+<section class="upload-page">
+
+    <h1>Merge PDF Files</h1>
+
+    <p>Select multiple PDF files and merge them into one document.</p>
+
+    <div class="upload-box">
+
+        <i class="fa-solid fa-cloud-arrow-up"></i>
+
+        <h2>Drag & Drop PDF Files</h2>
+
+        <p>or</p>
+
+        <form id="mergeForm" enctype="multipart/form-data">
+
+            <input
+                type="file"
+                id="pdfFiles"
+                name="pdfs"
+                multiple
+                accept=".pdf"
+            >
+
+            <br><br>
+
+            <button type="submit">
+                Merge PDFs
+            </button>
+
+        </form>
+
+        <p id="status"></p>
+
+    </div>
+
+</section>
+
+<script src="../js/merge.js"></script>
+
+</body>
+</html>

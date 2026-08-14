@@ -1,0 +1,165 @@
+.upload-section{
+
+padding:80px 10%;
+
+}
+
+.upload-container{
+
+max-width:800px;
+
+margin:auto;
+
+}
+
+.upload-area{
+
+border:3px dashed #2563EB;
+
+padding:60px;
+
+border-radius:20px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.3s;
+
+background:#fff;
+
+}
+
+.upload-area:hover{
+
+background:#EFF6FF;
+
+}
+
+.upload-area.drag{
+
+border-color:#06B6D4;
+
+background:#DBEAFE;
+
+}
+
+.upload-area i{
+
+font-size:70px;
+
+color:#2563EB;
+
+margin-bottom:20px;
+
+}
+
+.upload-area button{
+
+margin-top:20px;
+
+padding:15px 35px;
+
+background:#2563EB;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.file-details{
+
+margin-top:40px;
+
+display:none;
+
+background:white;
+
+padding:25px;
+
+border-radius:15px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+
+}
+
+.progress{
+
+height:10px;
+
+background:#ddd;
+
+margin:20px 0;
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+.progress-bar{
+
+width:0;
+
+height:100%;
+
+background:#2563EB;
+
+transition:.3s;
+
+}
+
+#continueBtn{
+
+padding:15px 30px;
+
+background:#16A34A;
+
+color:white;
+
+border:none;
+
+border-radius:8px;
+
+cursor:pointer;
+
+}
+
+.upload-page{
+    padding:80px 10%;
+}
+
+.upload-box{
+    max-width:600px;
+    margin:40px auto;
+    padding:50px;
+    border:3px dashed #3366ff;
+    border-radius:20px;
+    text-align:center;
+    background:#fff;
+}
+
+.upload-box i{
+    font-size:70px;
+    color:#3366ff;
+    margin-bottom:20px;
+}
+
+.upload-box h2{
+    margin-bottom:15px;
+}
+
+.upload-box button{
+    margin-top:20px;
+    padding:12px 30px;
+    border:none;
+    border-radius:8px;
+    background:#3366ff;
+    color:white;
+    cursor:pointer;
+}

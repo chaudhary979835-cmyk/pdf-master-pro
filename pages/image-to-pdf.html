@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Image to PDF | PDF Master Pro</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+        }
+
+        .image-pdf-page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 70px 20px;
+        }
+
+        .image-pdf-page h1 {
+            color: #14213d;
+            font-size: 32px;
+        }
+
+        .image-pdf-page > p {
+            color: #475569;
+        }
+
+        .upload-box {
+            max-width: 600px;
+            margin: 40px auto;
+
+            background: white;
+
+            border: 2px dashed #2864e6;
+
+            border-radius: 18px;
+
+            padding: 50px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .upload-box > i {
+            font-size: 60px;
+            color: #2864e6;
+            margin-bottom: 20px;
+        }
+
+        .upload-box h2 {
+            color: #14213d;
+        }
+
+        #imageFiles {
+            margin: 20px 0;
+        }
+
+        #convertBtn {
+            background: #2864e6;
+            color: white;
+
+            border: none;
+
+            padding: 15px 30px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+        #convertBtn:hover {
+            background: #1d4ed8;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <i class="fa-solid fa-file-pdf"></i>
+
+            <h2>
+                PDF Master Pro
+            </h2>
+
+        </div>
+
+
+        <ul class="nav-menu">
+
+            <li>
+                <a href="../index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="merge-pdf.html">
+                    Merge PDF
+                </a>
+            </li>
+
+            <li>
+                <a href="split-pdf.html">
+                    Split PDF
+                </a>
+            </li>
+
+            <li>
+                <a href="compress-pdf.html">
+                    Compress
+                </a>
+            </li>
+
+            <li>
+                <a href="image-to-pdf.html">
+                    Image to PDF
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<section class="image-pdf-page">
+
+    <h1>
+        Image to PDF
+    </h1>
+
+    <p>
+        Select JPG, JPEG or PNG images and
+        convert them into one PDF file.
+    </p>
+
+
+    <div class="upload-box">
+
+        <i class="fa-solid fa-images"></i>
+
+
+        <h2>
+            Select Images
+        </h2>
+
+
+        <p>
+            JPG, JPEG and PNG supported
+        </p>
+
+
+        <form
+            id="imageToPDFForm"
+        >
+
+            <input
+                type="file"
+                id="imageFiles"
+                multiple
+                accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+            >
+
+
+            <br>
+
+
+            <button
+                type="submit"
+                id="convertBtn"
+            >
+
+                <i class="fa-solid fa-file-pdf"></i>
+
+                Convert to PDF
+
+            </button>
+
+        </form>
+
+
+        <p id="status"></p>
+
+    </div>
+
+</section>
+
+
+<script>
+
+console.log("IMAGE TO PDF PAGE LOADED");
+
+
+const form =
+    document.getElementById(
+        "imageToPDFForm"
+    );
+
+
+const status =
+    document.getElementById(
+        "status"
+    );
+
+
+form.addEventListener(
+    "submit",
+    async function(e) {
+
+        e.preventDefault();
+
+
+        console.log(
+            "CONVERT BUTTON CLICKED"
+        );
+
+
+        const input =
+            document.getElementById(
+                "imageFiles"
+            );
+
+
+        const files =
+            input.files;
+
+
+        console.log(
+            "Selected files:",
+            files.length
+        );
+
+
+        if (
+            !files ||
+            files.length === 0
+        ) {
+
+            alert(
+                "Please select at least one image."
+            );
+
+            return;
+
+        }
+
+
+        const token =
+            localStorage.getItem(
+                "token"
+            );
+
+
+        console.log(
+            "Token exists:",
+            !!token
+        );
+
+
+        if (!token) {
+
+            alert(
+                "Please login first."
+            );
+
+            window.location.href =
+                "login.html";
+
+            return;
+
+        }
+
+
+        const formData =
+            new FormData();
+
+
+        for (
+            let i = 0;
+            i < files.length;
+            i++
+        ) {
+
+            formData.append(
+                "images",
+                files[i]
+            );
+
+        }
+
+
+        status.innerText =
+            "Converting... Please wait.";
+
+
+        try {
+
+            console.log(
+                "SENDING REQUEST TO BACKEND"
+            );
+
+
+            const response =
+                await fetch(
+                    "http://localhost:5000/api/pdf/image-to-pdf",
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            Authorization:
+                                `Bearer ${token}`
+
+                        },
+
+                        body: formData
+
+                    }
+                );
+
+
+            console.log(
+                "SERVER STATUS:",
+                response.status
+            );
+
+
+            const data =
+                await response.json();
+
+
+            console.log(
+                "SERVER RESPONSE:",
+                data
+            );
+
+
+            if (
+                !response.ok ||
+                !data.success
+            ) {
+
+                status.innerText =
+                    "Conversion failed.";
+
+                alert(
+                    data.message ||
+                    "Image to PDF failed."
+                );
+
+                return;
+
+            }
+
+
+            status.innerText =
+                "PDF created successfully!";
+
+
+            console.log(
+                "DOWNLOAD:",
+                data.download
+            );
+
+
+            const downloadUrl =
+                "http://localhost:5000" +
+                data.download;
+
+
+            const link =
+                document.createElement(
+                    "a"
+                );
+
+
+            link.href =
+                downloadUrl;
+
+
+            link.download =
+                "images-to-pdf.pdf";
+
+
+            document.body.appendChild(
+                link
+            );
+
+
+            link.click();
+
+
+            link.remove();
+
+
+            alert(
+                "Images converted to PDF successfully!"
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "FRONTEND ERROR:",
+                error
+            );
+
+
+            status.innerText =
+                "Conversion failed.";
+
+
+            alert(
+                "Image to PDF failed. Check browser Console."
+            );
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
