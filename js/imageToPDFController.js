@@ -99,7 +99,7 @@ if (!form) {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/pdf/image-to-pdf",
+                        "https://pdf-master-pro-xgql.onrender.com/api/pdf/image-to-pdf",
                         {
 
                             method: "POST",
@@ -155,7 +155,7 @@ if (!form) {
 
                 // Download
                 const downloadUrl =
-                    "http://localhost:5000" +
+                    "https://pdf-master-pro-xgql.onrender.com" +
                     data.download;
 
 

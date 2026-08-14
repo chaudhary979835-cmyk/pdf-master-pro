@@ -28,7 +28,7 @@ form.addEventListener("submit", async (e) => {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/pdf/merge",
+            "https://pdf-master-pro-xgql.onrender.com/api/pdf/merge",
             {
                 method: "POST",
                 headers: {
@@ -48,7 +48,7 @@ form.addEventListener("submit", async (e) => {
         }
 
         const downloadUrl =
-            "http://localhost:5000" + data.download;
+            "https://pdf-master-pro-xgql.onrender.com" + data.download;
 
         const link = document.createElement("a");
 

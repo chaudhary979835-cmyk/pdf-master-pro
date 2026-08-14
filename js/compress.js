@@ -27,7 +27,7 @@ form.addEventListener("submit", async (e) => {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/api/pdf/compress",
+            "https://pdf-master-pro-xgql.onrender.com/api/pdf/compress",
             {
                 method: "POST",
 
@@ -54,7 +54,7 @@ form.addEventListener("submit", async (e) => {
         }
 
         const downloadUrl =
-            "http://localhost:5000" +
+            "https://pdf-master-pro-xgql.onrender.com" +
             data.download;
 
         const link =

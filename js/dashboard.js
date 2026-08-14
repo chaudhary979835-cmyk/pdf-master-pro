@@ -73,7 +73,7 @@ async function loadHistory() {
 
         const response =
             await fetch(
-                "http://localhost:5000/api/history",
+                "https://pdf-master-pro-xgql.onrender.com/api/history",
                 {
                     method: "GET",
 
@@ -283,7 +283,7 @@ if (deleteHistoryBtn) {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/history",
+                        "https://pdf-master-pro-xgql.onrender.com/api/history",
                         {
                             method: "DELETE",
 

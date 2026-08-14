@@ -29,7 +29,7 @@ form.addEventListener("submit", async (e) => {
 
     try {
         const response = await fetch(
-            "http://localhost:5000/api/pdf/split",
+            "https://pdf-master-pro-xgql.onrender.com/api/pdf/split",
             {
                 method: "POST",
                 headers: {
@@ -49,7 +49,7 @@ form.addEventListener("submit", async (e) => {
         for (let i = 0; i < data.files.length; i++) {
 
             const fileUrl =
-                "http://localhost:5000" + data.files[i];
+                "https://pdf-master-pro-xgql.onrender.com" + data.files[i];
 
             const fileResponse = await fetch(fileUrl);
 
