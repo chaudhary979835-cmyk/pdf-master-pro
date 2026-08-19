@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pdf-master-pro-1.onrender.com/sitemap.xml
